@@ -5,6 +5,7 @@
 #if targetEnvironment(simulator)
 import SwiftUI
 
+@available(iOS 15, *)
 struct CameraStubView: View {
 
     let didPressCancel: () -> Void
@@ -31,6 +32,7 @@ struct CameraStubView: View {
     }
 }
 
+@available(iOS 15, *)
 struct CameraStubView_Preview: PreviewProvider {
     static var previews: some View {
         CameraStubView {
