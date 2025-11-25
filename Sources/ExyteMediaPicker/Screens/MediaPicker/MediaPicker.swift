@@ -37,6 +37,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
 
     @Binding private var isPresented: Bool
     private let onChange: MediaPickerCompletionClosure
+    private let cameraCellTap: (() -> ())?
 
     // MARK: - View builders
 
@@ -80,13 +81,15 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
                 onChange: @escaping MediaPickerCompletionClosure,
                 albumSelectionBuilder: AlbumSelectionClosure? = nil,
                 cameraSelectionBuilder: CameraSelectionClosure? = nil,
-                cameraViewBuilder: CameraViewClosure? = nil) {
+                cameraViewBuilder: CameraViewClosure? = nil,
+                cameraCellTap: (() -> ())? = nil) {
 
         self._isPresented = isPresented
         self._albums = .constant([])
         self._currentFullscreenMediaBinding = .constant(nil)
 
         self.onChange = onChange
+        self.cameraCellTap = cameraCellTap
         self.albumSelectionBuilder = albumSelectionBuilder
         self.cameraSelectionBuilder = cameraSelectionBuilder
         self.cameraViewBuilder = cameraViewBuilder
@@ -150,10 +153,20 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
 
     @ViewBuilder
     var albumSelectionContainer: some View {
-        let albumSelectionView = AlbumSelectionView(viewModel: viewModel, showingCamera: cameraBinding(), currentFullscreenMedia: $currentFullscreenMedia, selectionParamsHolder: selectionParamsHolder, mediaPickerParamsHolder: mediaPickerParamsHolder, filterClosure: filterClosure, massFilterClosure: massFilterClosure) {
-            // has media limit of 1, and it's been selected
-            isPresented = false
-        }
+        let albumSelectionView = AlbumSelectionView(
+            viewModel: viewModel,
+            showingCamera: cameraBinding(),
+            currentFullscreenMedia: $currentFullscreenMedia,
+            selectionParamsHolder: selectionParamsHolder,
+            mediaPickerParamsHolder: mediaPickerParamsHolder,
+            filterClosure: filterClosure,
+            massFilterClosure: massFilterClosure,
+            cameraCellTap: cameraCellTap,
+            dismiss: {
+                // has media limit of 1, and it's been selected
+                isPresented = false
+            }
+        )
 
         if let albumSelectionBuilder = albumSelectionBuilder {
             albumSelectionBuilder(ModeSwitcher(selection: modeBinding()), albumSelectionView, isInFullscreen)

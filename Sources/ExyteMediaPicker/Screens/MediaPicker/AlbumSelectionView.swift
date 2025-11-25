@@ -19,6 +19,7 @@ public struct AlbumSelectionView: View {
     let mediaPickerParamsHolder: MediaPickerParamsHolder
     let filterClosure: MediaPicker.FilterClosure?
     let massFilterClosure: MediaPicker.MassFilterClosure?
+    var cameraCellTap: (()->())?
     var dismiss: ()->()
 
     public var body: some View {
@@ -30,6 +31,7 @@ public struct AlbumSelectionView: View {
                 currentFullscreenMedia: $currentFullscreenMedia,
                 selectionParamsHolder: selectionParamsHolder,
                 mediaPickerParamsHolder: mediaPickerParamsHolder,
+                cameraCellTap: cameraCellTap,
                 dismiss: dismiss
             )
         case .albums:
@@ -56,6 +58,7 @@ public struct AlbumSelectionView: View {
                     currentFullscreenMedia: $currentFullscreenMedia,
                     selectionParamsHolder: selectionParamsHolder,
                     mediaPickerParamsHolder: MediaPickerParamsHolder(liveCameraCell: .none),
+                    cameraCellTap: cameraCellTap,
                     dismiss: dismiss
                 )
                 .id(album.id)

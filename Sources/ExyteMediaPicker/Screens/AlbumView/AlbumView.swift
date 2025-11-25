@@ -26,6 +26,8 @@ struct AlbumView: View {
 
     var selectionParamsHolder: SelectionParamsHolder
     var mediaPickerParamsHolder: MediaPickerParamsHolder
+
+    var cameraCellTap: (()->())?
     var dismiss: ()->()
 
     @State private var fullscreenItem: AssetMediaModel.ID?
@@ -58,9 +60,13 @@ struct AlbumView: View {
                     ProgressView()
                         .padding()
                 } else if !viewModel.isLoading, viewModel.assetMediaModels.isEmpty {
-                    Text("Empty data")
-                        .font(.title3)
-                        .foregroundColor(theme.main.pickerText)
+                    ProgressView()
+                        .padding()
+
+                    // TODO: Do not work?
+//                    Text("Empty data")
+//                        .font(.title3)
+//                        .foregroundColor(theme.main.pickerText)
                 } else {
                     mediasGrid
                 }
@@ -94,7 +100,11 @@ struct AlbumView: View {
 #if !targetEnvironment(simulator)
             if getLiveCameraCell() != .none && permissionsService.cameraPermissionStatus == .authorized {
                 LiveCameraCell {
-                    showingCamera = true
+                    if let cameraCellTap {
+                        cameraCellTap()
+                    } else {
+                        showingCamera = true
+                    }
                 }
             }
 #endif
