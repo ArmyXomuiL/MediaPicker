@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 public struct CameraSelectionView: View {
 
     @EnvironmentObject private var cameraSelectionService: CameraSelectionService
@@ -62,6 +63,7 @@ public struct CameraSelectionView: View {
     }
 }
 
+@available(iOS 17, *)
 struct DefaultCameraSelectionContainer: View {
 
     @EnvironmentObject private var cameraSelectionService: CameraSelectionService
