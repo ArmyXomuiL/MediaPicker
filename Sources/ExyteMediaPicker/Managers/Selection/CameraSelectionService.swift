@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15, *)
 final class CameraSelectionService: ObservableObject {
 
     var mediaSelectionLimit: Int? // if nill - unlimited

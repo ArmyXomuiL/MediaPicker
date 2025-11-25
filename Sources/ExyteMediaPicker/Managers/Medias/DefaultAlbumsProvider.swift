@@ -9,6 +9,7 @@ import Photos
 import SwiftUI
 
 @MainActor
+@available(iOS 14, *)
 final class DefaultAlbumsProvider: ObservableObject {
 
     @Published private(set) var albums: [AlbumModel] = []

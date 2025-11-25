@@ -7,6 +7,7 @@ import Photos
 import SwiftUI
 
 @MainActor
+@available(iOS 17, *)
 class BaseMediasProvider: ObservableObject {
     var selectionParamsHolder: SelectionParamsHolder
     var filterClosure: MediaPicker.FilterClosure?

@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14, *)
 struct PermissionsErrorView: View {
 
     let text: String

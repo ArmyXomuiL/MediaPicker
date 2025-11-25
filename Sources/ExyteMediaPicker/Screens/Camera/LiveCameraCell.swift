@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 struct LiveCameraCell: View {
     
     @Environment(\.scenePhase) private var scenePhase

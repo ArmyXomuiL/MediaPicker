@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14, *)
 struct PermissionActionView: View {
 
     enum PermissionType {
@@ -37,6 +38,7 @@ struct PermissionActionView: View {
     }
 }
 
+@available(iOS 14, *)
 private extension PermissionActionView {
     
     @ViewBuilder

@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 import Photos
 
+@available(iOS 14, *)
 final class SelectionService: ObservableObject {
 
     var mediaSelectionLimit: Int?

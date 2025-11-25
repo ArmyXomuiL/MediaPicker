@@ -9,6 +9,7 @@ struct AssetMediaModel {
     let asset: PHAsset
 }
 
+@available(iOS 14, *)
 extension AssetMediaModel: MediaModelProtocol {
 
     var mediaType: MediaType? {

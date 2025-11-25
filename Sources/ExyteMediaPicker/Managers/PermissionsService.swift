@@ -8,6 +8,7 @@ import AVFoundation
 import Photos
 
 @MainActor
+@available(iOS 14, *)
 final class PermissionsService: ObservableObject {
 
     static var shared = PermissionsService()
@@ -85,6 +86,7 @@ final class PermissionsService: ObservableObject {
     }
 }
 
+@available(iOS 14, *)
 extension PermissionsService {
     enum CameraPermissionStatus {
         case authorized

@@ -8,6 +8,7 @@ import Foundation
 import Photos
 import SwiftUI
 
+@available(iOS 17, *)
 final class AllMediasProvider: BaseMediasProvider {
 
     override func reload() {

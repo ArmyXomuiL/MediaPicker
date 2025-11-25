@@ -6,6 +6,7 @@ import Foundation
 import Photos
 import SwiftUI
 
+@available(iOS 17, *)
 final class AlbumMediasProvider: BaseMediasProvider {
 
     let album: AlbumModel

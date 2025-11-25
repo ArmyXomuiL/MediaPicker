@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14, *)
 public struct MediasGrid<Element, Camera, Content, LoadingCell>: View
 where Element: Identifiable, Camera: View, Content: View, LoadingCell: View {
 

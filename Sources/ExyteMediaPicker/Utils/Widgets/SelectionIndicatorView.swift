@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 15, *)
 struct SelectionIndicatorView: View {
 
     @EnvironmentObject private var selectionService: SelectionService

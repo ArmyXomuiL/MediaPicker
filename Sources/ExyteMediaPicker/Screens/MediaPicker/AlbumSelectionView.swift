@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 public struct AlbumSelectionView: View {
 
     @ObservedObject var viewModel: MediaPickerViewModel

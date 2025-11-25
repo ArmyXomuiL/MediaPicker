@@ -15,6 +15,7 @@ extension View {
     }
 }
 
+@available(iOS 15, *)
 extension Shape {
     func styled(_ foregroundColor: Color, border borderColor: Color = .clear, _ borderWidth: CGFloat = 0) -> some View {
         self.foregroundStyle(foregroundColor)   // Apply foreground color

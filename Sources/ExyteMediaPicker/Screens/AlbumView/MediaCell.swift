@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 14, *)
 struct MediaCell: View {
 
     @Environment(\.mediaPickerTheme) private var theme

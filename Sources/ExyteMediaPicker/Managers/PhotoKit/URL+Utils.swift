@@ -8,6 +8,7 @@
 import SwiftUI
 import Photos
 
+@available(iOS 14, *)
 extension URL {
 
     func getThumbnailURL() async -> URL? {

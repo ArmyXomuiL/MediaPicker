@@ -78,6 +78,7 @@ extension PHAsset {
     }
 }
 
+@available(iOS 14, *)
 extension PHAsset {
     func getURL() async -> URL? {
         let requestStore = RequestStore()
@@ -132,6 +133,7 @@ extension PHAsset {
     }
 }
 
+@available(iOS 14, *)
 extension CGImage {
     var jpegData: Data? {
         guard let mutableData = CFDataCreateMutable(nil, 0),
@@ -209,6 +211,7 @@ extension PHAsset {
     }
 }
 
+@available(iOS 14, *)
 extension AVAsset {
     func generateThumbnail() -> Data? {
         let imageGenerator = AVAssetImageGenerator(asset: self)

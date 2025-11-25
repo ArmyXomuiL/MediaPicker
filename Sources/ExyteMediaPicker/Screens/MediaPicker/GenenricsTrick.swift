@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - Partial genereic specification imitation
 
+@available(iOS 17, *)
 public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -22,6 +23,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -36,6 +38,7 @@ public extension MediaPicker where CameraSelectionContent == EmptyView, CameraVi
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraViewContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -50,6 +53,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraVie
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -64,6 +68,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where CameraViewContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -79,6 +84,7 @@ public extension MediaPicker where CameraViewContent == EmptyView {
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where CameraViewContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
@@ -94,6 +100,7 @@ public extension MediaPicker where CameraViewContent == EmptyView {
     }
 }
 
+@available(iOS 17, *)
 public extension MediaPicker where AlbumSelectionContent == EmptyView {
 
     init(isPresented: Binding<Bool>,

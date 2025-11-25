@@ -13,6 +13,7 @@ struct URLMediaModel {
     let url: URL
 }
 
+@available(iOS 15, *)
 extension URLMediaModel: MediaModelProtocol {
 
     var mediaType: MediaType? {

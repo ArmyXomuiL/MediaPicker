@@ -11,6 +11,7 @@ public enum LiveCameraCellStyle {
 import SwiftUI
 import AnchoredPopup
 
+@available(iOS 17, *)
 struct AlbumView: View {
 
     @EnvironmentObject private var selectionService: SelectionService

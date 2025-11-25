@@ -8,6 +8,7 @@
 import SwiftUI
 import AVFoundation
 
+@available(iOS 14, *)
 struct PlayerView: UIViewRepresentable {
 
     var player: AVPlayer
@@ -24,6 +25,7 @@ struct PlayerView: UIViewRepresentable {
     }
 }
 
+@available(iOS 14, *)
 class PlayerUIView: UIView {
 
     // MARK: Class Property

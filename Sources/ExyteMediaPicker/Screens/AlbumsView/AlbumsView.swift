@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 struct AlbumsView: View {
 
     @EnvironmentObject private var selectionService: SelectionService

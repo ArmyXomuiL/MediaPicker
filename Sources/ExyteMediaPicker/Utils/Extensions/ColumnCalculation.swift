@@ -8,6 +8,7 @@
 import SwiftUI
 
 @MainActor
+@available(iOS 14, *)
 func calculateColumnWidth(spacing: CGFloat) -> (CGFloat, [GridItem]) {
     let gridWidth = UIScreen.main.bounds.width
     let wholeCount = 3.0

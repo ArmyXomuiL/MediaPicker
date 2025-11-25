@@ -7,6 +7,7 @@ import UIKit
 import PhotosUI
 
 @MainActor
+@available(iOS 14, *)
 struct LimitedLibraryPickerProxyView: UIViewControllerRepresentable {
     @Binding var isPresented: Bool
     var didDismiss: @Sendable ()->()

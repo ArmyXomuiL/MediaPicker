@@ -13,6 +13,7 @@ extension AVAssetTrack: @unchecked Sendable { }
 #endif
 
 @MainActor
+@available(iOS 15, *)
 final class FullscreenCellViewModel: ObservableObject {
 
     let mediaModel: MediaModelProtocol

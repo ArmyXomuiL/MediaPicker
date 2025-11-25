@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14, *)
 public struct MediaPickerTheme: Sendable {
     public let main: Main
     public let selection: Selection
@@ -25,6 +26,7 @@ public struct MediaPickerTheme: Sendable {
     }
 }
 
+@available(iOS 14, *)
 extension MediaPickerTheme {
     public struct Main: Sendable {
         public let pickerText: Color

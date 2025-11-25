@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 import AnchoredPopup
 
+@available(iOS 17, *)
 struct FullscreenContainer: View {
 
     @EnvironmentObject private var selectionService: SelectionService

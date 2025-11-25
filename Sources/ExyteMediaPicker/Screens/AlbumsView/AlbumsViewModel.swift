@@ -5,6 +5,7 @@
 import Foundation
 
 @MainActor
+@available(iOS 14, *)
 final class AlbumsViewModel: ObservableObject {
 
     var albums: [AlbumModel] {

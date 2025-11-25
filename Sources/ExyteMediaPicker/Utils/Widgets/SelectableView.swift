@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 15, *)
 struct SelectableView<Content>: View where Content: View {
 
     var selected: Int?

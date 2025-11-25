@@ -17,6 +17,7 @@ extension AVCaptureSession: @retroactive @unchecked Sendable { }
 extension AVCaptureSession: @unchecked Sendable { }
 #endif
 
+@available(iOS 17, *)
 final actor CameraViewModel: NSObject, ObservableObject {
 
     struct CaptureDevice {
@@ -259,6 +260,7 @@ final actor CameraViewModel: NSObject, ObservableObject {
     }
 }
 
+@available(iOS 17, *)
 extension CameraViewModel: AVCapturePhotoCaptureDelegate {
     nonisolated func photoOutput(
         _ output: AVCapturePhotoOutput,
@@ -286,6 +288,7 @@ extension CameraViewModel: AVCapturePhotoCaptureDelegate {
     }
 }
 
+@available(iOS 17, *)
 extension CameraViewModel: AVCaptureFileOutputRecordingDelegate {
     nonisolated func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         Task {

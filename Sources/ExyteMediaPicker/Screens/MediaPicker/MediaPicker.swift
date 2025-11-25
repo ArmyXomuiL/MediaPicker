@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: View, CameraViewContent: View>: View {
 
     /// To provide custom buttons layout for photos grid view use actions and views provided by this closure:
@@ -319,6 +320,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
 
 // MARK: - Customization
 
+@available(iOS 17, *)
 public extension MediaPicker {
 
     func liveCameraCell(_ style: LiveCameraCellStyle = .small) -> MediaPicker {

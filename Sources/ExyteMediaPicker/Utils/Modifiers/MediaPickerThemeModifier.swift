@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14, *)
 public extension EnvironmentValues {
     #if swift(>=6.0)
     @Entry var mediaPickerTheme = MediaPickerTheme()
@@ -24,6 +25,7 @@ public extension EnvironmentValues {
 
 // Define keys only for older versions
 #if swift(<6.0)
+@available(iOS 14, *)
 @preconcurrency public struct MediaPickerThemeKey: EnvironmentKey {
     public static let defaultValue = MediaPickerTheme()
 }
@@ -33,6 +35,7 @@ public struct MediaPickerThemeIsOverriddenKey: EnvironmentKey {
 }
 #endif
 
+@available(iOS 14, *)
 public extension View {
     func mediaPickerTheme(_ theme: MediaPickerTheme) -> some View {
         self.environment(\.mediaPickerTheme, theme)

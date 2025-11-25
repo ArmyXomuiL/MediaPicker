@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 import AVKit
 
+@available(iOS 15, *)
 struct FullscreenCell: View {
     
     @Environment(\.mediaPickerTheme) private var theme

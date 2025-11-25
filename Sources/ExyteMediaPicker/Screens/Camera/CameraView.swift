@@ -5,6 +5,7 @@
 import SwiftUI
 import Photos
 
+@available(iOS 17, *)
 struct CustomCameraView<CameraViewContent: View>: View {
 
     @EnvironmentObject private var cameraSelectionService: CameraSelectionService
@@ -47,6 +48,7 @@ struct CustomCameraView<CameraViewContent: View>: View {
     }
 }
 
+@available(iOS 17, *)
 struct StandardConrolsCameraView: View {
 
     @EnvironmentObject private var cameraSelectionService: CameraSelectionService

@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
+@available(iOS 14, *)
 final class MediaPickerViewModel: ObservableObject {
 
 #if os(iOS)

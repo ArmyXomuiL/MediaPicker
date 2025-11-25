@@ -9,6 +9,7 @@ import Photos
 import SwiftUI
 
 @MainActor
+@available(iOS 17, *)
 final class AllPhotosProvider: BaseMediasProvider {
 
     override func reload() {
