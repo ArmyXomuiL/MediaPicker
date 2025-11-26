@@ -5,13 +5,13 @@
 import SwiftUI
 
 @available(iOS 17, *)
-public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: View, CameraViewContent: View>: View {
+public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: View, CameraViewContent: View, CustomCameraGoToSettingsContent: View>: View {
 
     /// To provide custom buttons layout for photos grid view use actions and views provided by this closure:
     /// - standard header with photos/albums switcher
     /// - selection view you can embed in your view
     /// - is in fullscreen photo details mode
-    public typealias AlbumSelectionClosure = ((ModeSwitcher, AlbumSelectionView, Bool) -> AlbumSelectionContent)
+    public typealias AlbumSelectionClosure = ((ModeSwitcher, AlbumSelectionView<CustomCameraGoToSettingsContent>, Bool) -> AlbumSelectionContent)
 
     /// To provide custom buttons layout for camera selection view use actions and views provided by this closure:
     /// - add more photos closure
@@ -30,6 +30,8 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
     /// - camera back/front closure
     public typealias CameraViewClosure = ((LiveCameraView, @escaping SimpleClosure, @escaping SimpleClosure, @escaping SimpleClosure, @escaping SimpleClosure, @escaping SimpleClosure, @escaping SimpleClosure, @escaping SimpleClosure) -> CameraViewContent)
 
+    public typealias CustomCameraGoToSettingsButtonClosure = (() -> CustomCameraGoToSettingsContent)
+
     public typealias FilterClosure = @Sendable (Media) async -> Media?
     public typealias MassFilterClosure = @Sendable ([Media]) async -> [Media]
 
@@ -38,13 +40,13 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
     @Binding private var isPresented: Bool
     private let onChange: MediaPickerCompletionClosure
     private let cameraCellTap: (() -> ())?
-    private let customCameraGoToSettingsButton: (() -> AnyView)?
 
     // MARK: - View builders
 
     private var albumSelectionBuilder: AlbumSelectionClosure? = nil
     private var cameraSelectionBuilder: CameraSelectionClosure? = nil
     private var cameraViewBuilder: CameraViewClosure? = nil
+    private var customCameraGoToSettingsButton: CustomCameraGoToSettingsButtonClosure? = nil
 
     // MARK: - Customization
 
@@ -83,8 +85,8 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
                 albumSelectionBuilder: AlbumSelectionClosure? = nil,
                 cameraSelectionBuilder: CameraSelectionClosure? = nil,
                 cameraViewBuilder: CameraViewClosure? = nil,
-                cameraCellTap: (() -> ())? = nil,
-                customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
+                customCameraGoToSettingsButton: CustomCameraGoToSettingsButtonClosure? = nil,
+                cameraCellTap: (() -> ())? = nil) {
 
         self._isPresented = isPresented
         self._albums = .constant([])
@@ -164,7 +166,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
             mediaPickerParamsHolder: mediaPickerParamsHolder,
             filterClosure: filterClosure,
             massFilterClosure: massFilterClosure,
-            customCameraGoToSettingsButton: customCameraGoToSettingsButton,
+            customCameraGoToSettingsButton: customCameraGoToSettingsButton?(),
             cameraCellTap: cameraCellTap,
             dismiss: {
                 // has media limit of 1, and it's been selected

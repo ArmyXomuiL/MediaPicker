@@ -5,7 +5,7 @@
 import SwiftUI
 
 @available(iOS 17, *)
-struct AlbumsView: View {
+struct AlbumsView<CustomCameraGoToSettingsButton: View>: View {
 
     @EnvironmentObject private var selectionService: SelectionService
     @Environment(\.mediaPickerTheme) private var theme
@@ -21,7 +21,7 @@ struct AlbumsView: View {
     let mediaPickerParamsHolder: MediaPickerParamsHolder
     let filterClosure: MediaPicker.FilterClosure?
     let massFilterClosure: MediaPicker.MassFilterClosure?
-    let customCameraGoToSettingsButton: (() -> any View)?
+    let customCameraGoToSettingsButton: CustomCameraGoToSettingsButton?
 
     @State private var showingLoadingCell = false
     

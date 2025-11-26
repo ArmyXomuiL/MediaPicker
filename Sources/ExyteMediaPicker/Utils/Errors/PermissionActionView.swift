@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 
 @available(iOS 14, *)
-struct PermissionActionView: View {
+struct PermissionActionView<CustomCameraGoToSettingsButton: View>: View {
 
     enum PermissionType {
         case library(PermissionsService.PhotoLibraryPermissionStatus)
@@ -14,7 +14,7 @@ struct PermissionActionView: View {
     }
 
     let type: PermissionType
-    let customCameraGoToSettingsButton: (() -> any View)?
+    let customCameraGoToSettingsButton: CustomCameraGoToSettingsButton?
 
     @State private var showSheet = false
     
@@ -63,7 +63,7 @@ private extension PermissionActionView {
             EmptyView()
         case .unavailable:
             if let customButton = customCameraGoToSettingsButton {
-                AnyView(customButton())
+                customButton
             } else {
                 goToSettingsButton(text: "Allow Camera access in settings to see live preview")
             }

@@ -12,7 +12,7 @@ import SwiftUI
 import AnchoredPopup
 
 @available(iOS 17, *)
-struct AlbumView: View {
+struct AlbumView<CustomCameraGoToSettingsButton: View>: View {
 
     @EnvironmentObject private var selectionService: SelectionService
     @Environment(\.mediaPickerTheme) private var theme
@@ -29,7 +29,7 @@ struct AlbumView: View {
 
     var cameraCellTap: (()->())?
     var dismiss: ()->()
-    let customCameraGoToSettingsButton: (() -> any View)?
+    let customCameraGoToSettingsButton: CustomCameraGoToSettingsButton?
 
     @State private var fullscreenItem: AssetMediaModel.ID?
 

@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - Partial genereic specification imitation
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure) {
@@ -24,7 +24,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -39,7 +39,7 @@ public extension MediaPicker where CameraSelectionContent == EmptyView, CameraVi
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraViewContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -54,7 +54,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraVie
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -69,7 +69,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where CameraViewContent == EmptyView {
+public extension MediaPicker where CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -85,7 +85,7 @@ public extension MediaPicker where CameraViewContent == EmptyView {
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where CameraViewContent == EmptyView {
+public extension MediaPicker where CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -101,7 +101,7 @@ public extension MediaPicker where CameraViewContent == EmptyView {
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -117,7 +117,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView {
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -133,7 +133,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -150,7 +150,7 @@ public extension MediaPicker where CameraSelectionContent == EmptyView, CameraVi
 }
 
 @available(iOS 17, *)
-public extension MediaPicker where AlbumSelectionContent == EmptyView {
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CustomCameraGoToSettingsContent == EmptyView {
 
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
@@ -173,15 +173,15 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
+         customCameraGoToSettingsButton: CustomCameraGoToSettingsButtonClosure? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,
                   albumSelectionBuilder: nil,
                   cameraSelectionBuilder: nil,
                   cameraViewBuilder: nil,
-                  cameraCellTap: cameraCellTap,
-                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton,
+                  cameraCellTap: cameraCellTap)
     }
 }
 
@@ -192,15 +192,15 @@ public extension MediaPicker where CameraSelectionContent == EmptyView, CameraVi
          onChange: @escaping MediaPickerCompletionClosure,
          albumSelectionBuilder: @escaping AlbumSelectionClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
+         customCameraGoToSettingsButton: CustomCameraGoToSettingsButtonClosure? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,
                   albumSelectionBuilder: albumSelectionBuilder,
                   cameraSelectionBuilder: nil,
                   cameraViewBuilder: nil,
-                  cameraCellTap: cameraCellTap,
-                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton,
+                  cameraCellTap: cameraCellTap)
     }
 }
 
@@ -212,14 +212,34 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView {
          cameraSelectionBuilder: @escaping CameraSelectionClosure,
          cameraViewBuilder: @escaping CameraViewClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
+         customCameraGoToSettingsButton: CustomCameraGoToSettingsButtonClosure? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,
                   albumSelectionBuilder: nil,
                   cameraSelectionBuilder: cameraSelectionBuilder,
                   cameraViewBuilder: cameraViewBuilder,
-                  cameraCellTap: cameraCellTap,
-                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton,
+                  cameraCellTap: cameraCellTap)
+    }
+}
+
+@available(iOS 17, *)
+public extension MediaPicker where CustomCameraGoToSettingsContent == EmptyView {
+
+    init(isPresented: Binding<Bool>,
+         onChange: @escaping MediaPickerCompletionClosure,
+         albumSelectionBuilder: AlbumSelectionClosure? = nil,
+         cameraSelectionBuilder: CameraSelectionClosure? = nil,
+         cameraViewBuilder: CameraViewClosure? = nil,
+         cameraCellTap: (() -> ())? = nil) {
+
+        self.init(isPresented: isPresented,
+                  onChange: onChange,
+                  albumSelectionBuilder: albumSelectionBuilder,
+                  cameraSelectionBuilder: cameraSelectionBuilder,
+                  cameraViewBuilder: cameraViewBuilder,
+                  customCameraGoToSettingsButton: nil,
+                  cameraCellTap: cameraCellTap)
     }
 }

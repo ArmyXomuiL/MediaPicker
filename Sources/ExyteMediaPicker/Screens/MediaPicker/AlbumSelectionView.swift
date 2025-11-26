@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 17, *)
-public struct AlbumSelectionView: View {
+public struct AlbumSelectionView<CustomCameraGoToSettingsButton: View>: View {
 
     @ObservedObject var viewModel: MediaPickerViewModel
 
@@ -19,7 +19,7 @@ public struct AlbumSelectionView: View {
     let mediaPickerParamsHolder: MediaPickerParamsHolder
     let filterClosure: MediaPicker.FilterClosure?
     let massFilterClosure: MediaPicker.MassFilterClosure?
-    let customCameraGoToSettingsButton: (() -> any View)?
+    let customCameraGoToSettingsButton: CustomCameraGoToSettingsButton?
     var cameraCellTap: (()->())?
     var dismiss: ()->()
 
