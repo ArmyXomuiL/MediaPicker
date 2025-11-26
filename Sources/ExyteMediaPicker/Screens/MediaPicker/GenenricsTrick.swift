@@ -173,7 +173,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSel
     init(isPresented: Binding<Bool>,
          onChange: @escaping MediaPickerCompletionClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,
@@ -192,7 +192,7 @@ public extension MediaPicker where CameraSelectionContent == EmptyView, CameraVi
          onChange: @escaping MediaPickerCompletionClosure,
          albumSelectionBuilder: @escaping AlbumSelectionClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,
@@ -212,7 +212,7 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView {
          cameraSelectionBuilder: @escaping CameraSelectionClosure,
          cameraViewBuilder: @escaping CameraViewClosure,
          cameraCellTap: (() -> ())? = nil,
-         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+         customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
 
         self.init(isPresented: isPresented,
                   onChange: onChange,

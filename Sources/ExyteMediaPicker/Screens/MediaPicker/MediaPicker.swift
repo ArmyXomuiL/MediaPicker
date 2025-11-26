@@ -38,7 +38,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
     @Binding private var isPresented: Bool
     private let onChange: MediaPickerCompletionClosure
     private let cameraCellTap: (() -> ())?
-    private let customCameraGoToSettingsButton: (() -> any View)?
+    private let customCameraGoToSettingsButton: (() -> AnyView)?
 
     // MARK: - View builders
 
@@ -84,7 +84,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
                 cameraSelectionBuilder: CameraSelectionClosure? = nil,
                 cameraViewBuilder: CameraViewClosure? = nil,
                 cameraCellTap: (() -> ())? = nil,
-                customCameraGoToSettingsButton: (() -> any View)? = nil) {
+                customCameraGoToSettingsButton: (() -> AnyView)? = nil) {
 
         self._isPresented = isPresented
         self._albums = .constant([])
