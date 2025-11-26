@@ -38,6 +38,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
     @Binding private var isPresented: Bool
     private let onChange: MediaPickerCompletionClosure
     private let cameraCellTap: (() -> ())?
+    private let customCameraGoToSettingsButton: (() -> any View)?
 
     // MARK: - View builders
 
@@ -82,7 +83,8 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
                 albumSelectionBuilder: AlbumSelectionClosure? = nil,
                 cameraSelectionBuilder: CameraSelectionClosure? = nil,
                 cameraViewBuilder: CameraViewClosure? = nil,
-                cameraCellTap: (() -> ())? = nil) {
+                cameraCellTap: (() -> ())? = nil,
+                customCameraGoToSettingsButton: (() -> any View)? = nil) {
 
         self._isPresented = isPresented
         self._albums = .constant([])
@@ -90,6 +92,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
 
         self.onChange = onChange
         self.cameraCellTap = cameraCellTap
+        self.customCameraGoToSettingsButton = customCameraGoToSettingsButton
         self.albumSelectionBuilder = albumSelectionBuilder
         self.cameraSelectionBuilder = cameraSelectionBuilder
         self.cameraViewBuilder = cameraViewBuilder
@@ -161,6 +164,7 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
             mediaPickerParamsHolder: mediaPickerParamsHolder,
             filterClosure: filterClosure,
             massFilterClosure: massFilterClosure,
+            customCameraGoToSettingsButton: customCameraGoToSettingsButton,
             cameraCellTap: cameraCellTap,
             dismiss: {
                 // has media limit of 1, and it's been selected
@@ -268,9 +272,9 @@ public struct MediaPicker<AlbumSelectionContent: View, CameraSelectionContent: V
                         }
                     )
             ) {
-                Text("Photos")
+                Text("Фото")
                     .tag(0)
-                Text("Albums")
+                Text("Альбомы")
                     .tag(1)
             }
             .pickerStyle(SegmentedPickerStyle())

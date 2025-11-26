@@ -14,6 +14,7 @@ struct PermissionActionView: View {
     }
 
     let type: PermissionType
+    let customCameraGoToSettingsButton: (() -> any View)?
 
     @State private var showSheet = false
     
@@ -61,7 +62,11 @@ private extension PermissionActionView {
         case .authorized, .unknown:
             EmptyView()
         case .unavailable:
-            goToSettingsButton(text: "Allow Camera access in settings to see live preview")
+            if let customButton = customCameraGoToSettingsButton {
+                AnyView(customButton())
+            } else {
+                goToSettingsButton(text: "Allow Camera access in settings to see live preview")
+            }
         }
     }
     

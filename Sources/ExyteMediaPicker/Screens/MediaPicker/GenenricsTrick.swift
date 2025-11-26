@@ -166,3 +166,60 @@ public extension MediaPicker where AlbumSelectionContent == EmptyView {
                   cameraCellTap: cameraCellTap)
     }
 }
+
+@available(iOS 17, *)
+public extension MediaPicker where AlbumSelectionContent == EmptyView, CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+
+    init(isPresented: Binding<Bool>,
+         onChange: @escaping MediaPickerCompletionClosure,
+         cameraCellTap: (() -> ())? = nil,
+         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+
+        self.init(isPresented: isPresented,
+                  onChange: onChange,
+                  albumSelectionBuilder: nil,
+                  cameraSelectionBuilder: nil,
+                  cameraViewBuilder: nil,
+                  cameraCellTap: cameraCellTap,
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+    }
+}
+
+@available(iOS 17, *)
+public extension MediaPicker where CameraSelectionContent == EmptyView, CameraViewContent == EmptyView {
+
+    init(isPresented: Binding<Bool>,
+         onChange: @escaping MediaPickerCompletionClosure,
+         albumSelectionBuilder: @escaping AlbumSelectionClosure,
+         cameraCellTap: (() -> ())? = nil,
+         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+
+        self.init(isPresented: isPresented,
+                  onChange: onChange,
+                  albumSelectionBuilder: albumSelectionBuilder,
+                  cameraSelectionBuilder: nil,
+                  cameraViewBuilder: nil,
+                  cameraCellTap: cameraCellTap,
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+    }
+}
+
+@available(iOS 17, *)
+public extension MediaPicker where AlbumSelectionContent == EmptyView {
+
+    init(isPresented: Binding<Bool>,
+         onChange: @escaping MediaPickerCompletionClosure,
+         cameraSelectionBuilder: @escaping CameraSelectionClosure,
+         cameraViewBuilder: @escaping CameraViewClosure,
+         cameraCellTap: (() -> ())? = nil,
+         customCameraGoToSettingsButton: (() -> any View)? = nil) {
+
+        self.init(isPresented: isPresented,
+                  onChange: onChange,
+                  albumSelectionBuilder: nil,
+                  cameraSelectionBuilder: cameraSelectionBuilder,
+                  cameraViewBuilder: cameraViewBuilder,
+                  cameraCellTap: cameraCellTap,
+                  customCameraGoToSettingsButton: customCameraGoToSettingsButton)
+    }
+}

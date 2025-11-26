@@ -21,6 +21,7 @@ struct AlbumsView: View {
     let mediaPickerParamsHolder: MediaPickerParamsHolder
     let filterClosure: MediaPicker.FilterClosure?
     let massFilterClosure: MediaPicker.MassFilterClosure?
+    let customCameraGoToSettingsButton: (() -> any View)?
 
     @State private var showingLoadingCell = false
     
@@ -31,7 +32,7 @@ struct AlbumsView: View {
     var body: some View {
         ScrollView {
             VStack {
-                PermissionActionView(type: .library(permissionsService.photoLibraryPermissionStatus))
+                PermissionActionView(type: .library(permissionsService.photoLibraryPermissionStatus), customCameraGoToSettingsButton: customCameraGoToSettingsButton)
 
                 if viewModel.isLoading {
                     ProgressView()

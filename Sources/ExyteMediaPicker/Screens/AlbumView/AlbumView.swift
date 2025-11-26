@@ -29,6 +29,7 @@ struct AlbumView: View {
 
     var cameraCellTap: (()->())?
     var dismiss: ()->()
+    let customCameraGoToSettingsButton: (() -> any View)?
 
     @State private var fullscreenItem: AssetMediaModel.ID?
 
@@ -50,10 +51,10 @@ struct AlbumView: View {
     var content: some View {
         ScrollView {
             VStack(spacing: 0) {
-                PermissionActionView(type: .library(permissionsService.photoLibraryPermissionStatus))
+                PermissionActionView(type: .library(permissionsService.photoLibraryPermissionStatus), customCameraGoToSettingsButton: customCameraGoToSettingsButton)
 
                 if mediaPickerParamsHolder.liveCameraCell != .none {
-                    PermissionActionView(type: .camera(permissionsService.cameraPermissionStatus))
+                    PermissionActionView(type: .camera(permissionsService.cameraPermissionStatus), customCameraGoToSettingsButton: customCameraGoToSettingsButton)
                 }
 
                 if viewModel.isLoading, viewModel.assetMediaModels.isEmpty {

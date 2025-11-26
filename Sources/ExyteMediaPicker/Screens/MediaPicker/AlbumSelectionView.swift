@@ -19,6 +19,7 @@ public struct AlbumSelectionView: View {
     let mediaPickerParamsHolder: MediaPickerParamsHolder
     let filterClosure: MediaPicker.FilterClosure?
     let massFilterClosure: MediaPicker.MassFilterClosure?
+    let customCameraGoToSettingsButton: (() -> any View)?
     var cameraCellTap: (()->())?
     var dismiss: ()->()
 
@@ -32,7 +33,8 @@ public struct AlbumSelectionView: View {
                 selectionParamsHolder: selectionParamsHolder,
                 mediaPickerParamsHolder: mediaPickerParamsHolder,
                 cameraCellTap: cameraCellTap,
-                dismiss: dismiss
+                dismiss: dismiss,
+                customCameraGoToSettingsButton: customCameraGoToSettingsButton
             )
         case .albums:
             AlbumsView(
@@ -45,7 +47,8 @@ public struct AlbumSelectionView: View {
                 selectionParamsHolder: selectionParamsHolder,
                 mediaPickerParamsHolder: mediaPickerParamsHolder,
                 filterClosure: filterClosure,
-                massFilterClosure: massFilterClosure
+                massFilterClosure: massFilterClosure,
+                customCameraGoToSettingsButton: customCameraGoToSettingsButton
             )
             .onAppear {
                 viewModel.defaultAlbumsProvider.mediaSelectionType = selectionParamsHolder.mediaType
@@ -59,7 +62,8 @@ public struct AlbumSelectionView: View {
                     selectionParamsHolder: selectionParamsHolder,
                     mediaPickerParamsHolder: MediaPickerParamsHolder(liveCameraCell: .none),
                     cameraCellTap: cameraCellTap,
-                    dismiss: dismiss
+                    dismiss: dismiss,
+                    customCameraGoToSettingsButton: customCameraGoToSettingsButton
                 )
                 .id(album.id)
             }
@@ -75,9 +79,9 @@ public struct ModeSwitcher: View {
 
     public var body: some View {
         Picker("", selection: $selection) {
-            Text("Photos")
+            Text("Фото")
                 .tag(0)
-            Text("Albums")
+            Text("Альбомы")
                 .tag(1)
         }
         .pickerStyle(SegmentedPickerStyle())
