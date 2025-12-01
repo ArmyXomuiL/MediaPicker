@@ -134,7 +134,8 @@ struct AlbumView<CustomCameraGoToSettingsButton: View>: View {
             if !selectionParamsHolder.showFullscreenPreview { // select immediately
                 selectionService.onSelect(assetMediaModel: assetMediaModel)
                 if selectionService.mediaSelectionLimit == 1 {
-                    dismiss()
+                    // TODO: do not close immediately!
+//                    dismiss()
                 }
             }
             else if fullscreenItem == nil {
