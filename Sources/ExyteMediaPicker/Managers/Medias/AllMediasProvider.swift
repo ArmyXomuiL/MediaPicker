@@ -24,10 +24,16 @@ final class AllMediasProvider: BaseMediasProvider {
         defer {
             isLoading = false
         }
+
         let allPhotosOptions = PHFetchOptions()
+        allPhotosOptions.fetchLimit = 1000
         allPhotosOptions.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
+
+        allPhotosOptions.includeAssetSourceTypes = [.typeUserLibrary, .typeCloudShared]
+        allPhotosOptions.includeAllBurstAssets = false
+
         let allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
         let assets = MediasProvider.map(fetchResult: allPhotos, mediaSelectionType: selectionParamsHolder.mediaType)
         filterAndPublish(assets: assets)

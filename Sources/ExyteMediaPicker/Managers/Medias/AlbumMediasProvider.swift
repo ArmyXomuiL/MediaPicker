@@ -30,6 +30,7 @@ final class AlbumMediasProvider: BaseMediasProvider {
             isLoading = false
         }
         let fetchOptions = PHFetchOptions()
+        fetchOptions.fetchLimit = 1000
         fetchOptions.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]

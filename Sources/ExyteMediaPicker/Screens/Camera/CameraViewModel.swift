@@ -176,13 +176,14 @@ final actor CameraViewModel: NSObject, ObservableObject {
         guard session.canAddInput(captureDeviceInput) else { return }
         session.addInput(captureDeviceInput)
 
-        let hasAudioInput = session.inputs.contains { ($0 as? AVCaptureDeviceInput)?.device.hasMediaType(.audio) == true }
-        if !hasAudioInput {
-            guard let captureAudioDevice = selectAudioCaptureDevice() else { return }
-            guard let captureAudioDeviceInput = try? AVCaptureDeviceInput(device: captureAudioDevice) else { return }
-            guard session.canAddInput(captureAudioDeviceInput) else { return }
-            session.addInput(captureAudioDeviceInput)
-        }
+        // TODO: discard audio permissions request
+//        let hasAudioInput = session.inputs.contains { ($0 as? AVCaptureDeviceInput)?.device.hasMediaType(.audio) == true }
+//        if !hasAudioInput {
+//            guard let captureAudioDevice = selectAudioCaptureDevice() else { return }
+//            guard let captureAudioDeviceInput = try? AVCaptureDeviceInput(device: captureAudioDevice) else { return }
+//            guard session.canAddInput(captureAudioDeviceInput) else { return }
+//            session.addInput(captureAudioDeviceInput)
+//        }
 
         let defaultZoom = CGFloat(truncating: captureDevice.virtualDeviceSwitchOverVideoZoomFactors.first ?? minScale as NSNumber)
 

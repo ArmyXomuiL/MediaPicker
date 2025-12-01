@@ -22,6 +22,7 @@ final class AllPhotosProvider: BaseMediasProvider {
 
     func reloadInternal() {
         let allPhotosOptions = PHFetchOptions()
+        allPhotosOptions.fetchLimit = 1000
         allPhotosOptions.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
