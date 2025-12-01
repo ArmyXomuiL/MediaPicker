@@ -30,13 +30,18 @@ final class SelectionService: ObservableObject {
     }
 
     func onSelect(assetMediaModel: AssetMediaModel) {
-        if let index = selected.firstIndex(of: assetMediaModel) {
-            selected.remove(at: index)
+        if mediaSelectionLimit == 1 {
+            selected = [assetMediaModel]
         } else {
-            if fitsSelectionLimit {
-                selected.append(assetMediaModel)
+            if let index = selected.firstIndex(of: assetMediaModel) {
+                selected.remove(at: index)
+            } else {
+                if fitsSelectionLimit {
+                    selected.append(assetMediaModel)
+                }
             }
         }
+
         onChange?(mapToMedia())
     }
 
